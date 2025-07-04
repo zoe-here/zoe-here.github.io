@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Wrap #1</title>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/article.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="../js/main.js" defer></script>
+</head>
+
+<body>
+<header>
+    <div class="header-content">
+        <button class="menu-icon">☰ Menu</button>
+        <nav class="top-nav">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <button class="dark-mode-toggle">🔆</button>
+        </nav>
+    </div>
+</header>
+
+<section class="article-hero">
+    <div class="article-hero-content">
+        <h2 class="article-title">Wrap GitHub Pages in 10 Minutes</h2>
+        <div class="article-meta">
+            <span>📅 June 18, 2025</span>
+            <span>🏷️ GitHub, Deployment</span>
+            <span>🌯 Dev Wrap</span>
+        </div>
+        <p class="article-subtitle">For hungry devs in a hurry 🥡
+            Want a quick and dirty GitHub Pages site? Here's the fastest way to ship it</p>
+    </div>
+</section>
+
+<main class="article-container">
+    <article class="article-content">
+        <!-- article content-->
+        <h1>Step 1: Create Your Repo</h1>
+        <p>Go to <a href="https://github.com/new">GitHub New Repo</a> and:</p>
+        <ul>
+            <li>Name it <code>username.github.io</code></li>
+            <li>Set visibility to Public</li>
+            <li>Check “Add a README” ✅</li>
+        </ul>
+        <h3>🧐 Not sure what username means like me?</h3>
+        <p>Click your profile picture (top right) → Your profile →</p>
+        <p>URL will look like <code>https://github.com/username</code> → That’s your username!</p>
+
+        <h1>Step 2: Clone It</h1>
+        <pre><code>git clone https://github.com/username/username.github.io.git</code></pre>
+
+        <h1>Step 3: Add Your First Page</h1>
+        <pre><code>cd username.github.io</code></pre>
+        <pre><code>echo "Hello World" > index.html</code></pre>
+
+        <h1>Step 4: Commit & push</h1>
+        <pre><code>git add --all</code></pre>
+        <pre><code>git commit -m "Initial commit"</code></pre>
+        <pre><code>git push -u origin main</code></pre>
+
+        <h1>Step 5: Done? Not Yet...</h1>
+        <p>Oops ❗“Authentication failed”?</p>
+        <p>Yeah, GitHub disabled password login for Git.</p>
+        <p>So we need a Personal Access Token (PAT).</p>
+        <p>But let’s be real... generating a new one each time? No thanks.</p>
+
+        <h2>🥷 Use SSH Instead (It’s Worth It)</h2>
+        <p>Here’s how to set it up once and forget about it:</p>
+        <p>📘
+            <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/connecting-to-github-with-ssh">Official
+                SSH Guide</a></p>
+
+        <h2>🔧 Generate SSH Key</h2>
+        <pre><code>git remote set-url origin git@github.com:username/reponame.git</code></pre>
+        <pre><code>ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</code></pre>
+        <table>
+            <thead>
+            <tr>
+                <th>Part</th>
+                <th>Meaning</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>ssh-keygen</td>
+                <td>Generate SSH key</td>
+            </tr>
+            <tr>
+                <td>-t rsa</td>
+                <td>Use RSA algorithm</td>
+            </tr>
+            <tr>
+                <td>-b 4096</td>
+                <td>4096-bit key (stronger than default 2048)</td>
+            </tr>
+            <tr>
+                <td>-C</td>
+                <td>Comment (use your GitHub email)</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>🔑 This gives you two files:</p>
+        <ul>
+            <li><code>id_rsa</code> → your private key (KEEP SECRET)</li>
+            <li><code>id_rsa.pub</code> → your public key (share with GitHub)</li>
+        </ul>
+
+        <h2>🧷 Add Your Public Key to GitHub</h2>
+        <pre><code>cat ~/.ssh/id_rsa.pub</code></pre>
+        <p>Copy the output. Then:</p>
+        <ol>
+            <li>Go to <a href="https://github.com/settings/keys">GitHub SSH Keys</a></li>
+            <li>Click "New SSH Key"</li>
+            <li>Paste and save</li>
+        </ol>
+        <p>That’s it. No more typing passwords for every push.</p>
+
+        <h2>🤖 Test Your Connection</h2>
+        <pre><code>ssh -T git@github.com</code></pre>
+        <ul>
+            <li>Type <code>yes</code></li>
+            <li>If it greets you by name → You're in!</li>
+        </ul>
+        <p>Then push again</p>
+        <p>If it goes through without asking for a password...</p>
+        <h3>🎉 Congratulations! Your GitHub Page is live!</h3>
+        <p>Open: <code>https://username.github.io</code>
+        <p>Hello World!</p>
+
+        <h1>Final Tips</h1>
+        <ul>
+            <li>Don’t share your private key (<code>id_rsa</code>)</li>
+            <li>You can create multiple SSH keys (for personal & work)</li>
+            <li>Accidentally committed your key? Revoke it immediately</li>
+        </ul>
+        <h3>Go enjoy your live page!</h3>
+
+        <p>It may just say "Hello World" today...</p>
+        <p>But it's a whole playground tomorrow 🌍✨</p>
+
+    </article>
+</main>
+
+<!-- Related Articles -->
+<section class="related-articles">
+    <h2>Related Articles</h2>
+    <div class="related-list">
+        <a href="/articles/code-crumbs-1" class="related-card">
+            <h3>Code Crumbs #1</h3>
+            <p>trim().isEmpty() vs .isBlank()</p>
+        </a>
+        <a href="/articles/starbugs-1" class="related-card">
+            <h3>Starbugs #1</h3>
+            <p>Spring Boot's Secret Guest</p>
+        </a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div class="left">
+            <span>🌍 Based in Estonia, but open to adventures worldwide</span>
+        </div>
+        <div class="right">
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="#">Email</a>
+            <button class="to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">TOP</button>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

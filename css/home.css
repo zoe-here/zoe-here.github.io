@@ -173,6 +173,13 @@ main {
     gap: 0.5rem;
 }
 
+.card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+}
+
 @media (max-width: 768px) {
     .hero {
         padding: 2rem 1rem;
